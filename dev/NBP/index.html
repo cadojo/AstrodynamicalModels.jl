@@ -15,23 +15,18 @@ Parameters (3):
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⢄
 ⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀
 ⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀
-⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀</code></pre><p>Finally, let&#39;s construct a Julia function which implements these dynamics!</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; f = NBPFunction(2)</code><code class="nohighlight hljs ansi" style="display:block;">┌ Warning: With state transition matrix dynamics appended to the state 
-│ vector, and Jacobian compuations reqeusted, your system 
-│ will require 24492 scalar 
-│ calculations! Consider setting `jac=false`, `stm=false`, or both.
-└ @ AstrodynamicalModels ~/work/AstrodynamicalModels.jl/AstrodynamicalModels.jl/src/NBP.jl:144
-(::ODEFunction{true, ModelingToolkit.var&quot;#f#203&quot;{RuntimeGeneratedFunctions.RuntimeGeneratedFunction{(:ˍ₋arg1, :ˍ₋arg2, :t), ModelingToolkit.var&quot;#_RGF_ModTag&quot;, ModelingToolkit.var&quot;#_RGF_ModTag&quot;, (0xd2987450, 0xf3ed7d12, 0x71917d37, 0x6a731d62, 0x15580f85)}, RuntimeGeneratedFunctions.RuntimeGeneratedFunction{(:ˍ₋out, :ˍ₋arg1, :ˍ₋arg2, :t), ModelingToolkit.var&quot;#_RGF_ModTag&quot;, ModelingToolkit.var&quot;#_RGF_ModTag&quot;, (0xe5e400bb, 0x42bc0c87, 0xf8211a4a, 0xc28ee028, 0x278cdbb0)}}, LinearAlgebra.UniformScaling{Bool}, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Vector{Symbol}, Symbol, ModelingToolkit.var&quot;#209#generated_observed#210&quot;{Bool, ODESystem, Dict{Any, Any}}, Nothing}) (generic function with 7 methods)</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; let u = randn(12), m = randn(2), G = rand(), t = 0
+⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀</code></pre><p>Finally, let&#39;s construct a Julia function which implements these dynamics!</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; f = NBPFunction(2)</code><code class="nohighlight hljs ansi" style="display:block;">(::ODEFunction{true, ModelingToolkit.var&quot;#f#203&quot;{RuntimeGeneratedFunctions.RuntimeGeneratedFunction{(:ˍ₋arg1, :ˍ₋arg2, :t), ModelingToolkit.var&quot;#_RGF_ModTag&quot;, ModelingToolkit.var&quot;#_RGF_ModTag&quot;, (0x75a949a1, 0xfb763a18, 0x974bfa3b, 0xbdc9ca6d, 0x4a42a177)}, RuntimeGeneratedFunctions.RuntimeGeneratedFunction{(:ˍ₋out, :ˍ₋arg1, :ˍ₋arg2, :t), ModelingToolkit.var&quot;#_RGF_ModTag&quot;, ModelingToolkit.var&quot;#_RGF_ModTag&quot;, (0x816e461c, 0xab098263, 0x4208a70d, 0xb9971b61, 0xe8858ca7)}}, LinearAlgebra.UniformScaling{Bool}, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Vector{Symbol}, Symbol, ModelingToolkit.var&quot;#209#generated_observed#210&quot;{Bool, ODESystem, Dict{Any, Any}}, Nothing}) (generic function with 7 methods)</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; let u = randn(12), m = randn(2), G = rand(), t = 0
            f(u, [G, m...], t)
        end</code><code class="nohighlight hljs ansi" style="display:block;">12-element Vector{Float64}:
- -0.5485441562645221
- -0.4586629108703153
-  1.3850335893880905
-  1.138660246812276
-  0.7416976023346824
-  1.0740489373208635
-  0.03999470172422194
-  0.0037595159045617967
- -0.019710891792258756
- -0.07341494292983915
- -0.006901030228463252
-  0.036181642408612394</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../CR3BP/">« CR3BP</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.7 on <span class="colophon-date" title="Wednesday 6 October 2021 01:54">Wednesday 6 October 2021</span>. Using Julia version 1.6.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+  0.012492303951447762
+ -1.1528942697324347
+ -0.23369747549825284
+ -0.7009831406248633
+ -0.0017586080136577432
+ -0.13900087403439895
+ -4.463885467003777
+ -2.24882062543319
+ -1.1154202951145076
+  8.519115145929577
+  4.291768234695727
+  2.128727092222055</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../CR3BP/">« CR3BP</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.7 on <span class="colophon-date" title="Wednesday 6 October 2021 02:11">Wednesday 6 October 2021</span>. Using Julia version 1.6.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
