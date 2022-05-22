@@ -3,7 +3,7 @@ Tests for CR3BP dynamics.
 """
 module CR3BPTests
 
-    using AstrodynamicalModels, ModelingToolkit, Test
+    using ModelingToolkit, AstrodynamicalModels, Test
 
     @testset "CR3BP Model Constructors" begin
         model = CR3BP(; stm=false, structural_simplify=false) 

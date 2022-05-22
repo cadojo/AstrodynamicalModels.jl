@@ -37,10 +37,10 @@ model = NBP(9)
 """
 @memoize function NBP(N::Int; stm=false, structural_simplify=true, name=:NBP)
 
-    N > 0 || throw(ArgumentError("`N` must be a number greater than zero!")) 
-    @parameters t G m[1:N]
-    @variables x[1:N](t) y[1:N](t) z[1:N](t) ẋ[1:N](t) ẏ[1:N](t) ż[1:N](t)
-    δ = Differential(t)
+    N > 1 || throw(ArgumentError("`N` must be a number greater than one!")) 
+    ModelingToolkit.@parameters t G m[1:N]
+    ModelingToolkit.@variables x[1:N](t) y[1:N](t) z[1:N](t) ẋ[1:N](t) ẏ[1:N](t) ż[1:N](t)
+    δ = ModelingToolkit.Differential(t)
 
     r = [[x[i], y[i], z[i]] for i in 1:N]
     v = [[ẋ[i], ẏ[i], ż[i]] for i in 1:N]
@@ -69,12 +69,12 @@ model = NBP(9)
             """
         end
 
-        @variables Φ[1:length(eqs),1:length(eqs)](t)
+        ModelingToolkit.@variables Φ[1:length(eqs),1:length(eqs)](t)
         Φ = Symbolics.scalarize(Φ)
         A = Symbolics.jacobian(map(el -> el.rhs, eqs), vcat(r...,v...))
     
         LHS = map(δ, Φ)
-        RHS = map(simplify, A * Φ)
+        RHS = map(ModelingToolkit.simplify, A * Φ)
 
         eqs = vcat(eqs, [LHS[i] ~ RHS[i] for i in 1:length(LHS)])
     end
@@ -85,7 +85,7 @@ model = NBP(9)
         modelname = name
     end
 
-    sys = ODESystem(
+    sys = ModelingToolkit.ODESystem(
         eqs, t, stm  ? vcat(r...,v...,Φ...) : vcat(r...,v...), vcat(G, m...); 
         name = modelname
     )
@@ -148,7 +148,7 @@ end
         calculations! Consider setting `jac=false`, `stm=false`, or both.
         """
     end
-    return ODEFunction(
+    return ModelingToolkit.ODEFunction(
         NBP(N; stm=stm, structural_simplify=structural_simplify, name=name);
         options...
     )

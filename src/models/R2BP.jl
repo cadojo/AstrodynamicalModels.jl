@@ -25,11 +25,11 @@ model = R2BP()
 """
 @memoize function R2BP(; stm=false, structural_simplify=true, name=:R2BP)
 
-    @parameters t μ 
-    @variables x(t) y(t) z(t) ẋ(t) ẏ(t) ż(t)
-    δ = Differential(t)
-    r = @SVector [x,y,z]
-    v = @SVector [ẋ,ẏ,ż]
+    ModelingToolkit.@parameters t μ 
+    ModelingToolkit.@variables x(t) y(t) z(t) ẋ(t) ẏ(t) ż(t)
+    δ = ModelingToolkit.Differential(t)
+    r = [x,y,z]
+    v = [ẋ,ẏ,ż]
 
     eqs = vcat(
         δ.(r) .~ v,
@@ -37,12 +37,12 @@ model = R2BP()
     )
 
     if stm 
-        @variables Φ[1:6,1:6](t)
+        ModelingToolkit.@variables Φ[1:6,1:6](t)
         Φ = Symbolics.scalarize(Φ)
         A = Symbolics.jacobian(map(el -> el.rhs, eqs), vcat(r,v))
     
         LHS = map(δ, Φ)
-        RHS = map(simplify, A * Φ)
+        RHS = map(ModelingToolkit.simplify, A * Φ)
 
         eqs = vcat(eqs, [LHS[i] ~ RHS[i] for i in 1:length(LHS)])
     end
@@ -53,7 +53,7 @@ model = R2BP()
         modelname = name
     end
 
-    sys = ODESystem(
+    sys = ModelingToolkit.ODESystem(
         eqs, t, stm  ? vcat(r,v,Φ...) : vcat(r,v), [μ]; 
         name = modelname
     )
@@ -86,7 +86,7 @@ end
 @memoize function R2BPFunction(; stm=false, structural_simplify=true, name=:R2BP, kwargs...)
     defaults = (; jac=true)
     options  = merge(defaults, kwargs)
-    return ODEFunction(
+    return ModelingToolkit.ODEFunction(
         R2BP(; stm=stm, structural_simplify=structural_simplify, name=name);
         options...
     )

@@ -3,7 +3,7 @@ Tests for R2BP dynamics.
 """
 module R2BPTests
 
-    using AstrodynamicalModels, ModelingToolkit, Test
+    using ModelingToolkit, AstrodynamicalModels, Test
 
     @testset "R2BP Model Constructors" begin
         model = R2BP(; stm=false, structural_simplify=false) 

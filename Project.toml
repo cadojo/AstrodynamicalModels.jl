@@ -1,29 +1,36 @@
 name = "AstrodynamicalModels"
 uuid = "4282b555-f590-4262-b575-3e516e1493a7"
 authors = ["Joe Carpinelli <jdcarpinelli@gmail.com>"]
-version = "1.1"
+version = "2.0.0"
 
 [deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 Memoize = "c03570c3-d221-55d1-a50c-7939bbd78826"
-ModelingToolkit = "961ee093-0014-501f-94e3-6117800e7a78"
+Requires = "ae029012-a4dd-5104-9daa-d747884805df"
 RuntimeGeneratedFunctions = "7e49a35a-f44a-4d26-94aa-eba1b4ca6b47"
-StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
+SPICE = "5bab7191-041a-5c2e-a744-024b9c3a5062"
 Symbolics = "0c5d862f-8b57-4792-8d23-62f2024744c7"
 
 [compat]
 DocStringExtensions = "0.8"
+HORIZONS = "0.3"
+Interpolations = "0.13"
 Memoize = "0.4"
 ModelingToolkit = "8"
 RuntimeGeneratedFunctions = "0.5"
-StaticArrays = "1"
+SPICE = "0.2"
 Symbolics = "4"
 julia = "1"
 
 [extras]
-DifferentialEquations = "0c46a032-eb83-5123-abaf-570d42b7fbaa"
+HORIZONS = "5a3ac768-beb4-554a-9c98-3342fe3377f5"
+Interpolations = "a98d9a8b-a2ab-59e6-89dd-64a1c18fca59"
+ModelingToolkit = "961ee093-0014-501f-94e3-6117800e7a78"
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
-test = ["Test", "DifferentialEquations"]
+test = ["Test", "Pkg", "ModelingToolkit"]

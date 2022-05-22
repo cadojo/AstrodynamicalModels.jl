@@ -3,7 +3,7 @@ Tests for NBP dynamics.
 """
 module NBPTests
 
-    using AstrodynamicalModels, ModelingToolkit, Test
+    using ModelingToolkit, AstrodynamicalModels, Test
 
     @testset "NBP Model Constructors" begin
         NBP(10; stm=false, structural_simplify=false) 
