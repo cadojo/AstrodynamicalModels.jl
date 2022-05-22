@@ -42,8 +42,16 @@ _Requires [`HORIZONS.jl`](https://github.com/PerezHz/HORIZONS.jl)!_
 
 ### Currently Implemented
 
-* Ephemeris fetching and formatting through a `DataFrame` (optional units with `Unitful`)
+* Ephemeris fetching and formatting through a `DataFrame` 
 * Cubic Hermite Interpolation of fetched ephemeris data through `Interpolations`
+
+### Soon to be Implemented
+
+* Model building at any (terrestrial) epoch
+
+### Way in the Future
+
+* Model building at any epoch, using [`AstroTime`](https://github.com/JuliaAstro/AstroTime.jl)
 
 ## License & Usage
 

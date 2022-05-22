@@ -1,5 +1,7 @@
+using HORIZONS
 using Latexify
 using Documenter
+using Interpolations
 using ModelingToolkit
 using AstrodynamicalModels
 
