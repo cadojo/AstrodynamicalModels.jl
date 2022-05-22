@@ -18,6 +18,7 @@ HORIZONS = "0.3"
 Interpolations = "0.13"
 Memoize = "0.4"
 ModelingToolkit = "8"
+Requires = "1"
 SPICE = "0.2"
 julia = "1"
 
