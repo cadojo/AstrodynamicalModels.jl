@@ -1,5 +1,5 @@
 [![Tests](https://github.com/cadojo/AstrodynamicalModels.jl/workflows/Tests/badge.svg)](https://github.com/cadojo/AstrodynamicalModels.jl/actions?query=workflow%3ATests)
-[![Docs](https://github.com/cadojo/AstrodynamicalModels.jl/workflows/Documentation/badge.svg)](https://cadojo.github.io/AstrodynamicalModels.jl/dev)
+[![Docs](https://github.com/cadojo/AstrodynamicalModels.jl/workflows/Documentation/badge.svg)](https://aperiodic.dev/AstrodynamicalModels.jl)
 
 
 # AstrodynamicalModels.jl
