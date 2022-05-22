@@ -69,6 +69,8 @@ ContinuousEphemeris("earth") isa ContinuousEphemeris{<:Number, <:Number, <:Cubic
     before they share or use the copyrighted tools. This includes the 
     ephemeris handling functionality in this package (e.g. `ephemeris`).
 
+$(LICENSE)
+
 ## Exports
 
 ### Always
