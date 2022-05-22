@@ -13,6 +13,7 @@ Requires = "ae029012-a4dd-5104-9daa-d747884805df"
 SPICE = "5bab7191-041a-5c2e-a744-024b9c3a5062"
 
 [compat]
+DataFrames = "1"
 DocStringExtensions = "0.8"
 HORIZONS = "0.3"
 Interpolations = "0.13"
