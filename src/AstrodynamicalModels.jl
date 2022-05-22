@@ -135,7 +135,7 @@ using DocStringExtensions
 
 function __init__()
     @require ModelingToolkit="961ee093-0014-501f-94e3-6117800e7a78" begin
-        using Symbolics
+
         using Memoize: @memoize
 
         export R2BP, CR3BP, NBP

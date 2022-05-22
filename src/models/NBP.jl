@@ -70,8 +70,8 @@ model = NBP(9)
         end
 
         ModelingToolkit.@variables Φ[1:length(eqs),1:length(eqs)](t)
-        Φ = Symbolics.scalarize(Φ)
-        A = Symbolics.jacobian(map(el -> el.rhs, eqs), vcat(r...,v...))
+        Φ = ModelingToolkit.scalarize(Φ)
+        A = ModelingToolkit.jacobian(map(el -> el.rhs, eqs), vcat(r...,v...))
     
         LHS = map(δ, Φ)
         RHS = map(ModelingToolkit.simplify, A * Φ)
