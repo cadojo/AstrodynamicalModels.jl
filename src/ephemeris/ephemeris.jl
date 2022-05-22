@@ -14,7 +14,7 @@ return a DataFrame of ephemeris data for the specified
 `timespan` and `intervol` between time steps.
 
 !!! warning
-    The [license file](LICENSE) for this package applies to all code 
+    The [license file](../../LICENSE) for this package applies to all code 
     in this package, but note 
     that the ephemeris data handling functionality of this package
     (e.g. the `ephemeris` function) uses copyrighted tools with their 
@@ -35,16 +35,34 @@ function ephemeris(
         body::Union{<:AbstractString, <:Integer}, 
         timespan::Tuple{<:Dates.AbstractDateTime, <:Dates.AbstractDateTime} = (now() - Year(5), now() + Year(5)),
         intervol::Dates.Period = Day(1);
+        continuous  = Val{false},
         type        = Float64,
         email       = "", 
         wrt         = "@ssb", 
         epoch       = "J2000", 
     )
 
+    if continuous == Val{true}
+        if "Interpolations" ∉ map(string, Base.loaded_modules_array())
+            throw(ArgumentError("The `continuous` keyword argument requires Interpolations.jl to be loaded!"))
+        end
+    elseif continuous != Val{false}
+        throw(ArgumentError("The `continuous` keyword argument must be set to `Val{true}` or `Val{false}`!"))
+    end
+
+    if isnothing(email)
+        EMAIL_ADDR = ""
+    elseif isempty(email) 
+        @warn """No email was provided throuh the `email` keyword argument! The JPL HORIZONS servers accept an email address with each request. Provide an email address using `email = "my-email@provider.com"`, or set `email = nothing` to suppress this warning.""" 
+        EMAIL_ADDR = ""
+    else
+        EMAIL_ADDR = email
+    end
+
     ID = body isa AbstractString ? naifcode(body) : body
 
     options = (
-        EMAIL_ADDR = email,
+        EMAIL_ADDR = EMAIL_ADDR, 
         CENTER = wrt,
         REF_SYSTEM = epoch,
         REF_PLANE = "FRAME", 
@@ -74,7 +92,11 @@ function ephemeris(
         throw(ErrorException("Ephemeris data downloaded successfully, but the column format is different than expected!"))
     end
     
-    return ephemeris
+    if continuous == Val{true}
+        return ContinuousEphemeris(ephemeris)
+    else
+        return ephemeris
+    end
 end
 
 """
@@ -82,7 +104,7 @@ Returns the Cartesian state vector of the requested body at the provided date an
 All `kwargs` are passed directly to the `timespan` method for `ephemeris`.
 
 !!! warning
-    The [license file](LICENSE) for this package applies to all code 
+    The [license file](../../LICENSE) for this package applies to all code 
     in this package, but note 
     that the ephemeris data handling functionality of this package
     (e.g. the `ephemeris` function) uses copyrighted tools with their 
@@ -100,7 +122,9 @@ All `kwargs` are passed directly to the `timespan` method for `ephemeris`.
     before they share or use those tools.
 """
 function ephemeris(body::Union{<:Integer, <:AbstractString}, time::Dates.AbstractDateTime; kwargs...)
-    data = ephemeris(body, (time, time + Year(1)), Year(1); kwargs...)
+    override = (; continuous = Val{false})
+    options  = merge(kwargs, override)
+    data     = ephemeris(body, (time, time + Year(1)), Year(1); options...)
     return DataFrame(data[1,2:end])
 end
 

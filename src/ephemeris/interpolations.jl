@@ -7,17 +7,30 @@
 
 export ContinuousEphemeris
 
+"""
+An abstract supertype for all possible interpolations for ephemeris data.
+"""
 abstract type AbstractEphemerisInterpolation end
 
-struct ContinuousEphemeris{T1<:Number, T2<:Number, TX<:Interpolations.CubicHermite, TY<:Interpolations.CubicHermite, TZ<:Interpolations.CubicHermite} <:AbstractEphemerisInterpolation
-    T::Tuple{T1,T2}
+"""
+A callable structure which holds ephemeris data for a body's positions and velocities between the timepoints specified by `T`.
+Call the object with a Julian day input to interpolate the body's positions and velocities using `Interpolations.CubicHermite`.
+"""
+struct ContinuousEphemeris{D<:Number, TX<:Interpolations.CubicHermite, TY<:Interpolations.CubicHermite, TZ<:Interpolations.CubicHermite} <:AbstractEphemerisInterpolation
+    T::Tuple{D,D}
     X::TX
     Y::TY
     Z::TZ
 end
 
+"""
+Construct a `ContinuousEphemeris` instance from an appropriately formatted 
+`DataFrame`. This is mostly an internal package method. See `ephemeris(args...; continuous = Val{true}, kwargs...)`
+for a more user friendly constructor!
+"""
 function ContinuousEphemeris(data::DataFrame)
 
+    T = eltype(data.dⱼ)
     timespan = (
         data.dⱼ[1],
         data.dⱼ[end],
@@ -27,23 +40,41 @@ function ContinuousEphemeris(data::DataFrame)
     Y = Interpolations.CubicHermite(data.dⱼ, data.y, data.ẏ)
     Z = Interpolations.CubicHermite(data.dⱼ, data.z, data.ż)
 
-    return ContinuousEphemeris{typeof(timespan[1]), typeof(timespan[2]), typeof(X), typeof(Y), typeof(Z)}(
+    return ContinuousEphemeris{T, typeof(X), typeof(Y), typeof(Z)}(
         timespan, X, Y, Z
     )
 end
 
-function (ephemeris::ContinuousEphemeris{F})(timepoint::Number; type = SVector{6,F}) where F <: AbstractFloat
-    t = timepoint isa F ? timepoint : F(timepoint)
-    return (
-        ephemeris.X(t),
-        ephemeris.Y(t),
-        ephemeris.Z(t),
-        Interpolations.gradient(ephemeris.X, t),
-        Interpolations.gradient(ephemeris.Y, t),
-        Interpolations.gradient(ephemeris.Z, t),
-    ) |> type
+"""
+Interpolate the body's position and velocity by a Julian day input.
+"""
+function (ephemeris::ContinuousEphemeris)(t::Number; bias = false, type = nothing) 
+    if bias
+        time = t + ephemeris.T[1]
+    else
+        time = t
+    end
+    if isnothing(type)
+        return vcat(
+            ephemeris.X(time),
+            ephemeris.Y(time),
+            ephemeris.Z(time),
+            Interpolations.gradient(ephemeris.X, time),
+            Interpolations.gradient(ephemeris.Y, time),
+            Interpolations.gradient(ephemeris.Z, time), 
+        )
+    else
+        return (
+            ephemeris.X(time),
+            ephemeris.Y(time),
+            ephemeris.Z(time),
+            Interpolations.gradient(ephemeris.X, time),
+            Interpolations.gradient(ephemeris.Y, time),
+            Interpolations.gradient(ephemeris.Z, time),
+        ) |> type
+    end
 end
 
-function Base.show(io::IO, ephemeris::ContinuousEphemeris{F}) where F <: AbstractFloat
-    print(io, "Cubic Hermite interpolation of ephemeris data with eltype $F")
+function Base.show(io::IO, ephemeris::ContinuousEphemeris) 
+    print(io, "Cubic Hermite interpolation of ephemeris data")
 end

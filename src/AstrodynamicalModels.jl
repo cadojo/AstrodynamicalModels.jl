@@ -52,7 +52,7 @@ ContinuousEphemeris("earth") isa ContinuousEphemeris{<:Number, <:Number, <:Cubic
 ## License
 
 !!! warning
-    The following license applies to all code in this package, but note 
+    The [license](../LICENSE) in this docstring applies to all code in this package, but note 
     that the ephemeris data downloading functionality of this package
     (e.g. the `ephemeris` function) uses copyrighted tools with their 
     own usage and code sharing restrictions. These copyrighted tools are 
@@ -104,7 +104,7 @@ ContinuousEphemeris("earth") isa ContinuousEphemeris{<:Number, <:Number, <:Cubic
 
 ### Requires `ModelingToolkit`
 
-* `Memoize`, `Symbolics`
+* `Memoize`
 
 ### Requires `HORIZONS`
 
