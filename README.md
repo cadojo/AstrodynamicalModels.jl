@@ -43,7 +43,7 @@ _Requires [`HORIZONS.jl`](https://github.com/PerezHz/HORIZONS.jl)!_
 ### Currently Implemented
 
 * Ephemeris fetching and formatting through a `DataFrame` 
-* Cubic Hermite Interpolation of fetched ephemeris data through `Interpolations`
+* Cubic Hermite Interpolation of fetched ephemeris data (requires `Interpolations.jl`)
 
 ### Soon to be Implemented
 
