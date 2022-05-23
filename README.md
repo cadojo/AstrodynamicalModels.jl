@@ -2,7 +2,7 @@
 [![Docs](https://github.com/cadojo/AstrodynamicalModels.jl/workflows/Documentation/badge.svg)](https://aperiodic.dev/AstrodynamicalModels.jl)
 
 
-# AstrodynamicalModels.jl
+# `AstrodynamicalModels`
 _Solar system body physical attributes, dynamical models, and ephemeris interpolation made simple!_
 
 ## Physical Attributes
