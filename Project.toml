@@ -14,7 +14,7 @@ SPICE = "5bab7191-041a-5c2e-a744-024b9c3a5062"
 
 [compat]
 DataFrames = "1"
-DocStringExtensions = "0.8"
+DocStringExtensions = "0.8, 0.9"
 HORIZONS = "0.3"
 Interpolations = "0.13"
 Memoize = "0.4"
