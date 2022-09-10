@@ -1,6 +1,6 @@
 [![Tests](https://github.com/cadojo/AstrodynamicalModels.jl/workflows/Tests/badge.svg)](https://github.com/cadojo/AstrodynamicalModels.jl/actions?query=workflow%3ATests)
 [![Docs](https://github.com/cadojo/AstrodynamicalModels.jl/workflows/Documentation/badge.svg)](https://aperiodic.dev/AstrodynamicalModels.jl)
-
+[![SciML Code Style](https://img.shields.io/static/v1?label=Style&message=SciML&color=9668e2&labelColor=3E474F)](https://github.com/SciML/SciMLStyle)
 
 # `AstrodynamicalModels`
 _Solar system body physical attributes, dynamical models, and ephemeris interpolation made simple!_
