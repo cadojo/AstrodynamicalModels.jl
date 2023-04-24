@@ -10,15 +10,15 @@ Closest candidates are:
 ⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀</code></pre><p>Finally, let&#39;s construct a Julia function which implements these dynamics!</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; f = NBPFunction(2)</code><code class="nohighlight hljs ansi" style="display:block;">(::ODEFunction{true, SciMLBase.AutoSpecialize, ModelingToolkit.var&quot;#f#520&quot;{RuntimeGeneratedFunctions.RuntimeGeneratedFunction{(:ˍ₋arg1, :ˍ₋arg2, :t), ModelingToolkit.var&quot;#_RGF_ModTag&quot;, ModelingToolkit.var&quot;#_RGF_ModTag&quot;, (0x376a9d10, 0x241e700e, 0x8bdb84ba, 0x2f61ec35, 0x7d772a84)}, RuntimeGeneratedFunctions.RuntimeGeneratedFunction{(:ˍ₋out, :ˍ₋arg1, :ˍ₋arg2, :t), ModelingToolkit.var&quot;#_RGF_ModTag&quot;, ModelingToolkit.var&quot;#_RGF_ModTag&quot;, (0xa9d3855c, 0x7e7e6781, 0xfba1da9c, 0xd54f7784, 0x2a6f4097)}}, LinearAlgebra.UniformScaling{Bool}, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Vector{Symbol}, Symbol, Vector{Symbol}, ModelingToolkit.var&quot;#545#generated_observed#528&quot;{Bool, ODESystem, Dict{Any, Any}}, Nothing, ODESystem}) (generic function with 1 method)</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; let u = randn(12), m = randn(2), G = rand(), t = 0
            f(u, [G, m...], t)
        end</code><code class="nohighlight hljs ansi" style="display:block;">12-element Vector{Float64}:
-  0.7655735740161185
- -1.8572356833553902
- -0.8643461368762936
-  0.18667149723698687
-  0.5652032526034435
-  1.504252026926696
-  0.011331122111016898
-  0.09642128752018643
- -0.0021600172464178173
- -0.011819189715313436
- -0.10057446020177017
-  0.002253056085146185</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../CR3BP/">« CR3BP</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.24 on <span class="colophon-date" title="Monday 24 April 2023 11:15">Monday 24 April 2023</span>. Using Julia version 1.8.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+ -0.858902269978009
+ -0.036407006499281504
+  2.0706278023004163
+ -0.8942183871569148
+ -0.41846050843277105
+ -0.5820422441356256
+  0.034483210206066255
+ -0.011083769941345707
+  0.05179333229066052
+ -0.05082655829716294
+  0.0163369325451331
+ -0.0763408281115453</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../CR3BP/">« CR3BP</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.24 on <span class="colophon-date" title="Monday 24 April 2023 11:59">Monday 24 April 2023</span>. Using Julia version 1.8.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
