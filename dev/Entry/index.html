@@ -21,26 +21,8 @@ Parameters (7):
                                                                 v(t)*cos(γ(t))     0
                                                       (-v(t)*sin(γ(t))) / r(t)     0</code></pre><p>Finally, let&#39;s construct a Julia function which implements these dynamics!</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; f = PlanarEntryFunction()</code><code class="nohighlight hljs ansi" style="display:block;">(::ODEFunction{true, SciMLBase.AutoSpecialize, ModelingToolkit.var&quot;#f#522&quot;{RuntimeGeneratedFunctions.RuntimeGeneratedFunction{(:ˍ₋arg1, :ˍ₋arg2, :t), ModelingToolkit.var&quot;#_RGF_ModTag&quot;, ModelingToolkit.var&quot;#_RGF_ModTag&quot;, (0xfc2e9d6a, 0x97448655, 0xee7fb77b, 0x99492ddc, 0xaa13df15), Expr}, RuntimeGeneratedFunctions.RuntimeGeneratedFunction{(:ˍ₋out, :ˍ₋arg1, :ˍ₋arg2, :t), ModelingToolkit.var&quot;#_RGF_ModTag&quot;, ModelingToolkit.var&quot;#_RGF_ModTag&quot;, (0xe226e257, 0xf7d7e7cf, 0xbcf0bd06, 0x302e0668, 0x9b8b15f8), Expr}}, LinearAlgebra.UniformScaling{Bool}, Nothing, Nothing, ModelingToolkit.var&quot;#_jac#526&quot;{RuntimeGeneratedFunctions.RuntimeGeneratedFunction{(:ˍ₋arg1, :ˍ₋arg2, :t), ModelingToolkit.var&quot;#_RGF_ModTag&quot;, ModelingToolkit.var&quot;#_RGF_ModTag&quot;, (0xc508fd71, 0x7e2ad8bd, 0x0abdd834, 0x0313802e, 0x9a9ebf93), Expr}, RuntimeGeneratedFunctions.RuntimeGeneratedFunction{(:ˍ₋out, :ˍ₋arg1, :ˍ₋arg2, :t), ModelingToolkit.var&quot;#_RGF_ModTag&quot;, ModelingToolkit.var&quot;#_RGF_ModTag&quot;, (0x9c0ff386, 0x1681ccbb, 0x8c3c08e6, 0x0c216419, 0x2bfc89e6), Expr}}, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Vector{Symbol}, Symbol, Vector{Symbol}, ModelingToolkit.var&quot;#570#generated_observed#530&quot;{Bool, ODESystem, Dict{Any, Any}}, Nothing, ODESystem}) (generic function with 1 method)</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; let u = randn(4), p = randn(7), t = 0
            f(u, p, t)
-       end</code><code class="nohighlight hljs ansi" style="display:block;">ERROR: DomainError with -1.4127678791074032:
-sqrt will only return a complex result if called with a complex argument. Try sqrt(Complex(x)).
-DomainError detected in the user `f` function. This occurs when the domain of a function is violated.
-For example, `log(-1.0)` is undefined because `log` of a real number is defined to only output real
-numbers, but `log` of a negative number is complex valued and therefore Julia throws a DomainError
-by default. Cases to be aware of include:
-
-* `log(x)`, `sqrt(x)`, `cbrt(x)`, etc. where `x&lt;0`
-* `x^y` for `x&lt;0` floating point `y` (example: `(-1.0)^(1/2) == im`)
-
-Within the context of SciML, this error can occur within the solver process even if the domain constraint
-would not be violated in the solution due to adaptivity. For example, an ODE solver or optimization
-routine may check a step at `new_u` which violates the domain constraint, and if violated reject the
-step and use a smaller `dt`. However, the throwing of this error will have halted the solving process.
-
-Thus the recommended fix is to replace this function with the equivalent ones from NaNMath.jl
-(https://github.com/JuliaMath/NaNMath.jl) which returns a NaN instead of an error. The solver will then
-effectively use the NaN within the error control routines to reject the out of bounds step. Additionally,
-one could perform a domain transformation on the variables so that such an issue does not occur in the
-definition of `f`.
-
-For more information, check out the following FAQ page:
-https://docs.sciml.ai/Optimization/stable/API/FAQ/#The-Solver-Seems-to-Violate-Constraints-During-the-Optimization,-Causing-DomainErrors,-What-Can-I-Do-About-That?</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../NBP/">« NBP</a><a class="docs-footer-nextpage" href="../Attitude/">Attitude »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.24 on <span class="colophon-date" title="Saturday 20 May 2023 01:59">Saturday 20 May 2023</span>. Using Julia version 1.9.0.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+       end</code><code class="nohighlight hljs ansi" style="display:block;">4-element Vector{Float64}:
+ 31.083914487032818
+  2.0970334846911047
+ -0.6159075294178593
+  2.2272104090771867</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../NBP/">« NBP</a><a class="docs-footer-nextpage" href="../Attitude/">Attitude »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.24 on <span class="colophon-date" title="Saturday 20 May 2023 17:39">Saturday 20 May 2023</span>. Using Julia version 1.9.0.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
