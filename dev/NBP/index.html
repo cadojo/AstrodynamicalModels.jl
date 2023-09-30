@@ -18,15 +18,15 @@
 ⎣⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⎦</code></pre><p>Finally, let&#39;s construct a Julia function which implements these dynamics!</p><pre><code class="language-julia-repl hljs" style="display:block;">julia&gt; f = NBFunction(2)</code><code class="nohighlight hljs ansi" style="display:block;">(::ODEFunction{true, SciMLBase.FullSpecialize, ModelingToolkit.var&quot;#k#545&quot;{RuntimeGeneratedFunctions.RuntimeGeneratedFunction{(:ˍ₋arg1, :ˍ₋arg2, :t), ModelingToolkit.var&quot;#_RGF_ModTag&quot;, ModelingToolkit.var&quot;#_RGF_ModTag&quot;, (0xdecfc607, 0x619b8c8d, 0x8586c750, 0x7543d6c1, 0x9ab728e8), Nothing}, RuntimeGeneratedFunctions.RuntimeGeneratedFunction{(:ˍ₋out, :ˍ₋arg1, :ˍ₋arg2, :t), ModelingToolkit.var&quot;#_RGF_ModTag&quot;, ModelingToolkit.var&quot;#_RGF_ModTag&quot;, (0xbfc600dc, 0xdfdaa0f9, 0xcfb4e7c4, 0x81fd24f0, 0x9622d3c3), Nothing}}, LinearAlgebra.UniformScaling{Bool}, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Vector{Symbol}, Symbol, Vector{Symbol}, ModelingToolkit.var&quot;#630#generated_observed#555&quot;{Bool, ODESystem, Dict{Any, Any}, Vector{SymbolicUtils.BasicSymbolic{Real}}}, Nothing, ODESystem}) (generic function with 1 method)</code><br/><code class="language-julia-repl hljs" style="display:block;">julia&gt; let u = randn(12), m = randn(2), G = rand(), t = 0
            f(u, [G, m...], t)
        end</code><code class="nohighlight hljs ansi" style="display:block;">12-element Vector{Float64}:
-  0.043461057875092204
-  0.0505424889428213
-  0.21193125600069418
- -0.9366656114776649
- -0.2879228117028787
-  0.03200345629985421
- -0.009332554292272283
-  0.001524705295086147
- -0.00032357244608248063
-  0.004868881520298628
- -0.0007954531206203048
-  0.0001688107943302656</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../CR3BP/">« CR3BP</a><a class="docs-footer-nextpage" href="../Entry/">Entry »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.1.0 on <span class="colophon-date" title="Saturday 30 September 2023 01:32">Saturday 30 September 2023</span>. Using Julia version 1.9.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+  0.3393698760505071
+ -1.2408469155616813
+  0.09640338429343066
+ -1.4062766534562356
+ -0.16872251563661747
+  0.4127296955608299
+ -0.023791048252240554
+  0.15071685011624958
+ -0.14751914753074652
+  0.025063065084324394
+ -0.1587751066585384
+  0.1554064350821093</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../CR3BP/">« CR3BP</a><a class="docs-footer-nextpage" href="../Entry/">Entry »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.1.0 on <span class="colophon-date" title="Saturday 30 September 2023 01:56">Saturday 30 September 2023</span>. Using Julia version 1.9.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
